@@ -1,5 +1,4 @@
 # jobplus3-3
-------
 > LouPlus Team 3 https://www.shiyanlou.com/louplus/python
 
 * [孙文轲](https://github.com/sunwenke)
