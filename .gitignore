@@ -8,6 +8,7 @@ Vagrantfile
 venv
 ngrok
 jobplus/config.py
+migrations
 *.mo
 *.egg-info
 *.egg
