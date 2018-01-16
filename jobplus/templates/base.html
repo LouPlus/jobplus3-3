@@ -3,12 +3,54 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>JobPlus</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="static/main.css" />
-    <script src="static/main.js"></script>
+    <title>{% block title %}JobPlus{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    {% block head_css %}
+    <link rel="stylesheet" type="text/css" media="screen" href="static/layui/css/layui.css"/>
+    <link rel="stylesheet" href="http://labfile.oss.aliyuncs.com/courses/923/week7/code/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="static/layui/css/jobplus.css"/>
+    <!-- 轮播字体css -->
+    <link href='http://cdn.webfont.youziku.com/webfonts/nomal/95215/28595/5a5df8e9f629d8171c551228.css' rel='stylesheet' type='text/css'
+    />
+    {% endblock %}
 </head>
 <body>
-    <h1>JobPlus</h1>
+    {% block header %}
+    <div class='layui-header layui-bg-black'>
+        <div class='layui-container'>
+        <ul class="layui-nav layui-bg-black">
+            <li class="layui-nav-item"><a href="" class='logo' style="color:#ffffff;font-family:'ActionJacksonfa43d9770173ef';">JobPlus</a></li>
+            <li class="layui-nav-item"><a href="">职位</a></li>
+            <li class="layui-nav-item"><a href="">企业</a></li>
+            <li class="layui-nav-item"><a href="">控制台</a></li>
+        </ul>
+        <ul class='layui-nav layui-layout-right layui-bg-black'>
+            <li class="layui-nav-item layui-unselect"><span class="layui-icon" style="font-size:15px" href="/">&#xe612;</span></li>
+            <li class="layui-nav-item"><a href="">登录</a></li>
+            <li class="layui-nav-item"><a href="">注册</a></li>
+            <li class="layui-nav-item"><a href="">企业注册</a></li>
+            <li class="layui-nav-item"><a href=""><img src="static/layui/images/head.jpg" class="layui-nav-img">我</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;">修改信息</a></dd>
+                    <dd><a href="javascript:;">建立管理</a></dd>
+                    <dd><a href="javascript:;">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+        </div>
+    </div>
+    {% endblock %}
+    {% block body %}{% endblock %}
+    {% block footer %}
+    <footer class="footer navbar-bottom">
+        <div class="container text-center">
+            © Copyright 2018 by JobPlus
+        </div>
+    </footer>
+    {% endblock %}
 </body>
+{% block tail_js %}
+<script src="static/layui/layui.js"></script>
+<script src="static/layui/jobplus.js"></script>
+{% endblock %}
 </html>
