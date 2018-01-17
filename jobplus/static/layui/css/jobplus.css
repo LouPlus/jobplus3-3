@@ -1,0 +1,113 @@
+body {
+    /* background: #f2f2f5; */
+    color: #333;
+    font-size: 14px;
+    font-family: "Hiragino Sans GB",
+    "Microsoft Yahei", 
+    "SimSun", 
+    "Arial",
+    "Helvetica Neue",
+    "Helvetica";
+}
+
+a{color:#333;}
+a:link {text-decoration:none;}
+a:active {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:none; color: #009688;}
+.sim-profile>a:hover {color: #009688;}
+
+.logo{
+    font-size: 25px;
+}
+#carousel{
+    margin: auto;
+    /* margin-top: 50px; */
+}
+
+.demo-carousel{
+    font-size: 30px;
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+    text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7);
+    /* 轮播字体 */
+    font-family:'DFPPOPMix-W5fa44df1a8173ef';
+}
+
+.page-header{
+    border-bottom: 1px solid #00b38a;
+    margin-bottom: 40px;
+}
+
+.job-item{
+    padding: 15px;
+    border: none;
+}
+
+.thumbnail{
+    box-shadow: 0 4px 10px 0 rgba(0,7,7,.5);
+}
+
+.thumbnail:hover{
+    box-shadow: 0 8px 15px 0 rgba(0,7,7,.5);
+}
+
+.salary{
+    color: #fa6041;
+    font-size: 16px;
+    float: right
+}
+
+.requ{
+    color: #777;
+}
+
+.small-logo{
+    width: 40px;
+    float: left
+}
+
+.com-logo{
+    width: 80px;
+    /* margin:  */
+}
+
+.sim-peofile{
+    float: left
+}
+
+.footer{
+    height: 70px;
+    line-height: 70px;
+    margin-top: 80px;
+    background-color: #393D49;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.more-list{
+    margin-top: 50px;
+    width: 300px;
+}
+
+.job-info{
+    float: left;
+}
+
+.com-info{
+    float: right;
+}
+
+.job-list{
+    padding: 20px 40px 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px 0 rgba(0,7,7,.5);
+}
+
+.job-list:hover{
+    box-shadow: 0 8px 15px 0 rgba(0,7,7,.5);
+}
+
+.float-right{
+    float: right;
+}
