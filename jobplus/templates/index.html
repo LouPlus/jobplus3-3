@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block head_css %}
+{{ super() }}
+<!-- 轮播字体css -->
+<link href='http://cdn.webfont.youziku.com/webfonts/nomal/95215/189/5a5dfd18f629d8171c551231.css' rel='stylesheet' type='text/css'
+/>
+{% endblock %}
+{% block body %}
+<!-- 轮播图 -->
+<div class="layui-carousel" id="carousel">
+    <div carousel-item class='carousel-font'>
+        <div><p class="layui-bg-green demo-carousel">收拾行李，寻找最新的自己！</p></div>
+        <div><p class="layui-bg-red demo-carousel">在这里，你能收获的不仅仅是高薪，还有技能、知识和家人！</p></div>
+        <div><p class="layui-bg-blue demo-carousel">即刻起，点赞你的生活，从这一份工作开始！</p></div>
+        <div><p class="layui-bg-orange demo-carousel">只要你有才，虚以待位，只等你来！</p></div>
+        <div><p class="layui-bg-cyan demo-carousel">无限的发展空间，我们的成长邀请你一同参与！</p></div>
+    </div>
+</div>
+<div class='layui-container'>
+    <div class='page-header'><h1>最新职位</h1></div>
+    <!-- 最新职位行 -->
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail job-item">
+                <h4><a href="">后端工程师</a><small> [09：19发布]</small><span class='salary'>20-40K</span></h4>
+                <span class='requ'>经验3-5年 /本科</span>
+                <hr>
+                <div class="caption">
+                    <img src="https://www.lgstatic.com/thumbnail_100x100/i/image/M00/55/79/CgqKkVfHiNKAc9R2AAECAkN7oLA541.jpg" class='small-logo'>
+                    <div class='sim-profile'>
+                        <a href="">北京桃花谷文化艺术公司</a><br>
+                        <span class='requ'>文化娱乐/天使轮/北京</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center"><a href="" class="layui-btn layui-btn-primary more-list">查看更多</a></div>
+    <div class='page-header'><h1>最新公司</h1></div>
+    <!-- 最新公司行 -->
+    <div class="row">
+        <div class="col-sm-4 col-md-3">
+            <div class="thumbnail job-item text-center">
+                <img src="https://www.lgstatic.com/thumbnail_160x160/i/image3/M00/01/87/CgpOIFpcSdWAJlEyAAAhK1dS3rs937.JPG" class='com-logo'>
+                <p><a href="">央视国际视频通讯有限公司</a></p>
+                <p class='requ'>文化娱乐 /不需要融资</p>
+                <p>“向世界传播中国，向世界报道世界”</p>
+                <hr>
+                <div class="caption text-center">
+                    <div class='sim-profile'>
+                        <a href=""><span style="color: #009688">32</span><br>在招职位</a><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center"><a href="" class="layui-btn layui-btn-primary more-list">查看更多</a></div>
+</div>
+{% endblock %}

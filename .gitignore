@@ -5,9 +5,10 @@ __pycache__
 .vagrant/*
 Vagrantfile
 *.pyc
-*/venv
+venv
 ngrok
-#jobplus/config.py
+jobplus/config.py
+migrations
 *.mo
 *.egg-info
 *.egg
