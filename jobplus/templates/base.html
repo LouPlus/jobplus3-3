@@ -19,16 +19,15 @@
     <div class='layui-header layui-bg-black'>
         <div class='layui-container'>
         <ul class="layui-nav layui-bg-black">
-            <li class="layui-nav-item"><a href="" class='logo' style="color:#ffffff;font-family:'ActionJacksonfa43d9770173ef';">JobPlus</a></li>
-            <li class="layui-nav-item"><a href="">职位</a></li>
-            <li class="layui-nav-item"><a href="">企业</a></li>
-            <li class="layui-nav-item"><a href="">控制台</a></li>
+            <li class="layui-nav-item"><a href="{{ url_for('front.index') }}" class='logo' style="color:#ffffff;font-family:'ActionJacksonfa43d9770173ef';">JobPlus</a></li>
+            <li class="layui-nav-item"><a href="{{ url_for('front.job_list') }}">职位</a></li>
+            <li class="layui-nav-item"><a href="{{ url_for('front.company_list') }}">公司</a></li>
+            <li class="layui-nav-item"><a href="{{ url_for('front.admin') }}">控制台</a></li>
         </ul>
         <ul class='layui-nav layui-layout-right layui-bg-black'>
             <li class="layui-nav-item layui-unselect"><span class="layui-icon" style="font-size:15px" href="/">&#xe612;</span></li>
             <li class="layui-nav-item"><a href="">登录</a></li>
             <li class="layui-nav-item"><a href="">注册</a></li>
-            <li class="layui-nav-item"><a href="">企业注册</a></li>
             <li class="layui-nav-item"><a href=""><img src="static/layui/images/head.jpg" class="layui-nav-img">我</a>
                 <dl class="layui-nav-child">
                     <dd><a href="javascript:;">修改信息</a></dd>
