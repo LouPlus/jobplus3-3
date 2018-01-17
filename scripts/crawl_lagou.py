@@ -1,17 +1,20 @@
 import scrapy
 
-class CoursesSpider(scrapy.Spider):
+class JobSpider(scrapy.Spider):
     name = 'jobs'
-
     start_urls = ['https://www.lagou.com/']
 
     def parse(self, response):
-        for course in response.xpath('//li[contains(@class,"position_list_item ")]'):
+        for job in response.xpath('.//ul[@class="clearfix position_list_ul"]/li'):
             yield {
-                'name': response.css('div.position_name a::text').extract_first(),
-                'salary': response.css('span.salary ::text').extract_first(),
-                'requirement': response.css('div.position_main_info span::text').extract_first(),
-                'company_name':response.css('div.company_name a::text').extract_first().strip(),
-                'location':response.xpath ( '//div[@class="industry wordCut"]/span[3]/text()' ).extract_first (),
-                'img_url': response.css('div.clearfix img::attr(src)').extract_first()
+                'name': job.css('div.position_name a::text').extract_first(),
+                'salary': job.css('span.salary ::text').extract_first(),
+                'requirement': job.css('div.position_main_info span::text').extract_first(),
+                'company_name':job.css('div.company_name a::text').extract_first().strip(),
+                'location':job.xpath ( '//div[@class="industry wordCut"]/span[3]/text()' ).extract_first (),
+                'experience': job.css ( 'div.position_main_info span::text' ).extract_first (),
+                'create_date': job.css ( 'span.create-time::text' ).re_first ( '\u2002(.+)\u2002' ),
+                'img_url': job.css('div.clearfix img::attr(src)').extract_first()
             }
+
+# scrapy runspider scripts/crawl_lagou.py -o datas/jobs.json
