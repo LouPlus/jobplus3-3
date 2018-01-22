@@ -1,0 +1,18 @@
+{% extends 'form.html' %}
+{% from "macros.html" import render_form %}
+{% block form %}
+<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+    <ul class="layui-tab-title">
+        <li class="layui-this">用户注册</li>
+        <li>企业注册</li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            {{ render_form(form, url_for('front.register')) }}
+        </div>
+        <div class="layui-tab-item">
+            {{ render_form(company_form, url_for('front.register')) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
