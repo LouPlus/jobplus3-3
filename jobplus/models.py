@@ -32,7 +32,7 @@ class User(Base, UserMixin):
     role = db.Column(db.SmallInteger, default=ROLE_USER)
     status = db.Column(db.SmallInteger, default=1)
     # 用户上传的简历
-    resume_url = db.Column(db.String(64))
+    resume = db.Column(db.String(64))
 
     def __repr__(self):
         return '<User:{}>'.format(self.username)
@@ -70,7 +70,6 @@ class User(Base, UserMixin):
         admin = cls.query.filter_by(username=name).first()
         if admin:
             return admin.username, default_password
-        default_password = 'admin123'
         admin = User(
             username=name,
             email='admin@qq.com',
