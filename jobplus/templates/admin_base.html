@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>layout 后台大布局 - Layui</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="static/layui/css/layui.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="static/layui/css/jobplus.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='layui/css/layui.css') }}" />
+    <link rel="stylesheet" href="http://labfile.oss.aliyuncs.com/courses/923/week7/code/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='layui/css/jobplus.css') }}"/>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -20,7 +21,7 @@
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
         <a href="javascript:;">
-          <img src="http://imgsrc.baidu.com/imgad/pic/item/eaf81a4c510fd9f997a763412e2dd42a2834a461.jpg" class="layui-nav-img">
+          <img src="{{ url_for('static', filename='layui/images/head.jpg') }}" class="layui-nav-img">
           admin
         </a>
         <dl class="layui-nav-child">
@@ -38,9 +39,19 @@
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">管理模块</a>
           <dl class="layui-nav-child">
+            {% if current_user.role == 10 %}
+            <dd><a href="javascript:;">个人信息</a></dd>
+            <dd><a href="javascript:;">简历管理</a></dd>
+            <dd><a href="javascript:;">我的投递</a></dd>
+            {% elif current_user.role == 20 %}
+            <dd><a href="javascript:;">企业信息</a></dd>
+            <dd><a href="javascript:;">职位管理</a></dd>
+            <dd><a href="javascript:;">面试管理</a></dd>
+            {% elif current_user.role == 30 %}
+            <dd><a href="javascript:;">管理员信息</a></dd>
             <dd><a href="javascript:;">用户管理</a></dd>
             <dd><a href="javascript:;">职位管理</a></dd>
-            <dd><a href="javascript:;">其他模块</a></dd>
+            {% endif %}
           </dl>
         </li>
         <li class="layui-nav-item"><a href="">待开发...</a></li>
@@ -49,15 +60,17 @@
     </div>
   </div>
   <div class="layui-body">
+    <div class='layui-container'>
       {% block backcontent %}{% endblock %}
+    </div>
     <!-- 内容主体区域 -->
   </div>
   <div class="layui-footer">
     <!-- 底部固定区域 -->
-    Copyright © 2013-2017&nbsp;&nbsp;|&nbsp;&nbsp;JobPlus.com
+    Copyright © 2018&nbsp;&nbsp;|&nbsp;&nbsp;JobPlus.com
   </div>
 </div>
-<script src="static/layui/layui.js"></script>
-<script src="static/layui/jobplus.js"></script>
+<script src="{{ url_for('static', filename='layui/layui.js') }}"></script>
+<script src="{{ url_for('static', filename='layui/jobplus.js') }}"></script>
 </body>
 </html>

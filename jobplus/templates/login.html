@@ -1,0 +1,5 @@
+{% extends 'form.html' %}
+{% from "macros.html" import render_form %}
+{% block form %}
+{{ render_form(form, url_for('front.login')) }}
+{% endblock %}

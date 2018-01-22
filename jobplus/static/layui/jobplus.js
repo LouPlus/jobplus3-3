@@ -15,3 +15,19 @@ layui.use('carousel', function () {
         //,anim: 'updown' //切换动画方式
     });
 });
+
+// 表单模块
+layui.use('form', function () {
+    var form = layui.form;
+    //监听提交
+    form.on('submit(formDemo)', function (data) {
+        layer.msg(JSON.stringify(data.field));
+        return false;
+    });
+});
+
+// 弹出层
+layui.use('layer', function () {
+    var layer = layui.layer;
+    // layer.msg('欢迎使用 JobPlus');
+}); 

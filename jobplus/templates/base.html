@@ -19,26 +19,41 @@
     <div class='layui-header layui-bg-black'>
         <div class='layui-container'>
         <ul class="layui-nav layui-bg-black">
-            <li class="layui-nav-item"><a href="{{ url_for('front.index') }}" class='logo' style="color:#ffffff;font-family:'ActionJacksonfa43d9770173ef';">JobPlus</a></li>
+            <li class="layui-nav-item"><a href="{{ url_for('front.index') }}" style="color:#ffffff;font-size:25px;font-family:'ActionJacksonfa43d9770173ef';">JobPlus</a></li>
             <li class="layui-nav-item"><a href="{{ url_for('front.job_list') }}">职位</a></li>
             <li class="layui-nav-item"><a href="{{ url_for('front.company_list') }}">公司</a></li>
+            {% if current_user.is_authenticated and current_user.is_admin %}
             <li class="layui-nav-item"><a href="{{ url_for('front.admin') }}">控制台</a></li>
+            {% endif %}
         </ul>
         <ul class='layui-nav layui-layout-right layui-bg-black'>
+            {% if not current_user.is_authenticated %}
             <li class="layui-nav-item layui-unselect"><span class="layui-icon" style="font-size:15px" href="/">&#xe612;</span></li>
-            <li class="layui-nav-item"><a href="">登录</a></li>
-            <li class="layui-nav-item"><a href="">注册</a></li>
-            <li class="layui-nav-item"><a href=""><img src="static/layui/images/head.jpg" class="layui-nav-img">我</a>
+            <li class="layui-nav-item"><a href="{{ url_for('front.login') }}">登录</a></li>
+            <li class="layui-nav-item"><a href="{{ url_for('front.register') }}">注册</a></li>
+            {% else %}
+            <li class="layui-nav-item"><a href="javascript:;"><img src="static/layui/images/head.jpg" class="layui-nav-img">{{ current_user.username }}</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="javascript:;">修改信息</a></dd>
-                    <dd><a href="javascript:;">建立管理</a></dd>
-                    <dd><a href="javascript:;">退出</a></dd>
+                    <dd><a href="{{ url_for('user.user_profile') }}">我的主页</a></dd>
+                    <dd><a href="javascript:;">简历管理</a></dd>
+                    <dd><a href="{{ url_for('front.logout') }}">退出登录</a></dd>
                 </dl>
             </li>
+            {% endif %}
         </ul>
         </div>
     </div>
     {% endblock %}
+    <!-- {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+          {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ message }}
+          </div>
+          {% endfor %}
+          {% endif %}
+      {% endwith %} -->
     {% block body %}{% endblock %}
     {% block footer %}
     <footer class="footer navbar-bottom">
