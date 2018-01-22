@@ -14,7 +14,6 @@ def create_app(config):
     app.config.from_object(configs.get(config))
     register_blueprints(app)
     register_extensions(app)
-    # create_admin(app)
     return app
 
 
@@ -38,11 +37,3 @@ def register_extensions(app):
         return User.query.get(id)
 
     login_manager.login_view = 'front.login'
-
-
-# 创建默认管理员用户
-def create_admin(app):
-    with app.app_context():
-        name, password = User.create_administrator()
-        app.logger.debug('create administrator user: %s, password: %s', name,
-                         password)
