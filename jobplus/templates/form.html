@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}JobPlus{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="static/layui/css/layui.css"/>
+    <link rel="stylesheet" href="http://labfile.oss.aliyuncs.com/courses/923/week7/code/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="static/layui/css/jobplus.css"/>
+    <!-- 轮播字体css -->
+    <link href='http://cdn.webfont.youziku.com/webfonts/nomal/95215/28595/5a5df8e9f629d8171c551228.css' rel='stylesheet' type='text/css'
+    />
+</head>
+<body>
+    <div class='login-bg login-table'>
+        <div class='layui-container'>
+            <a href="{{ url_for('front.index') }}" style="color:#ffffff;font-size:35px;font-family:'ActionJacksonfa43d9770173ef';">JobPlus</a>
+            <div class='login-form'>
+                {% block form %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+<script src="static/layui/layui.js"></script>
+<script src="static/layui/jobplus.js"></script>
+</html>
