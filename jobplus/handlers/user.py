@@ -11,6 +11,7 @@ user = Blueprint('user', __name__, url_prefix='/user')
 
 
 @user.route('/profile', methods=['GET', 'POST'])
+@login_required
 def user_profile():
     form = UserRegisterForm(obj=current_user)
     return render_template('profile.html', form=form)

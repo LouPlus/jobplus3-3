@@ -14,14 +14,17 @@ def create_app(config):
     app.config.from_object(configs.get(config))
     register_blueprints(app)
     register_extensions(app)
-    create_admin(app)
+    # create_admin(app)
     return app
 
 
 def register_blueprints(app):
-    from .handlers import front, user
+    from .handlers import front, user, admin, company, job
     app.register_blueprint(front)
     app.register_blueprint(user)
+    app.register_blueprint(admin)
+    app.register_blueprint(company)
+    app.register_blueprint(job)
 
 
 def register_extensions(app):
