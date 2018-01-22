@@ -6,9 +6,9 @@
     <title>{% block title %}JobPlus{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     {% block head_css %}
-    <link rel="stylesheet" type="text/css" media="screen" href="static/layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='layui/css/layui.css') }}"/>
     <link rel="stylesheet" href="http://labfile.oss.aliyuncs.com/courses/923/week7/code/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="static/layui/css/jobplus.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='layui/css/jobplus.css') }}"/>
     <!-- 轮播字体css -->
     <link href='http://cdn.webfont.youziku.com/webfonts/nomal/95215/28595/5a5df8e9f629d8171c551228.css' rel='stylesheet' type='text/css'
     />
@@ -20,8 +20,8 @@
         <div class='layui-container'>
         <ul class="layui-nav layui-bg-black">
             <li class="layui-nav-item"><a href="{{ url_for('front.index') }}" style="color:#ffffff;font-size:25px;font-family:'ActionJacksonfa43d9770173ef';">JobPlus</a></li>
-            <li class="layui-nav-item"><a href="{{ url_for('front.job_list') }}">职位</a></li>
-            <li class="layui-nav-item"><a href="{{ url_for('front.company_list') }}">公司</a></li>
+            <li class="layui-nav-item"><a href="{{ url_for('job.index') }}">职位</a></li>
+            <li class="layui-nav-item"><a href="{{ url_for('company.index') }}">公司</a></li>
             {% if current_user.is_authenticated and current_user.is_admin %}
             <li class="layui-nav-item"><a href="{{ url_for('front.admin') }}">控制台</a></li>
             {% endif %}
@@ -64,7 +64,7 @@
     {% endblock %}
 </body>
 {% block tail_js %}
-<script src="static/layui/layui.js"></script>
-<script src="static/layui/jobplus.js"></script>
+<script src="{{ url_for('static', filename='layui/layui.js') }}"></script>
+<script src="{{ url_for('static', filename='layui/jobplus.js') }}"></script>
 {% endblock %}
 </html>
