@@ -31,6 +31,8 @@ class User(Base, UserMixin):
     _password = db.Column('password', db.String(256), nullable=False)
     role = db.Column(db.SmallInteger, default=ROLE_USER)
     status = db.Column(db.SmallInteger, default=1)
+    # 用户上传的简历
+    resume_url = db.Column(db.String(64))
 
     def __repr__(self):
         return '<User:{}>'.format(self.username)
@@ -38,7 +40,7 @@ class User(Base, UserMixin):
     @property
     def password(self):
         return self._password
-    
+
     @password.setter
     def password(self, orig_password):
         self._password = generate_password_hash(orig_password)
@@ -58,12 +60,33 @@ class User(Base, UserMixin):
     def is_enable(self):
         return self.status == 1
 
+    @classmethod
+    def create_administrator(cls):
+        """创建管理员账户
+        """
+        name = 'admin'
+        default_password = 'admin123'
+        # 管理员账户名称默认为 admin
+        admin = cls.query.filter_by(username=name).first()
+        if admin:
+            return admin.username, default_password
+        default_password = 'admin123'
+        admin = User(
+            username=name,
+            email='admin@qq.com',
+            password=default_password,
+            role=cls.ROLE_ADMIN)
+        db.session.add(admin)
+        db.session.commit()
+        return name, default_password
+
 
 class Company(Base, UserMixin):
     __tablename__ = 'company'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer,
+                        db.ForeignKey('user.id', ondelete='SET NULL'))
     name = db.Column(db.String(32), unique=True, index=True, nullable=False)
     location = db.Column(db.String(32), default='中国')
     intro = db.Column(db.String(128), default='这家公司什么都没有说...')
@@ -81,8 +104,10 @@ class Company(Base, UserMixin):
 
 assoc_job_user = db.Table(
     'assoc_job_user',
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
-    db.Column('job_id', db.Integer, db.ForeignKey('job.id')),
+    db.Column('user_id', db.Integer,
+              db.ForeignKey('user.id', ondelete='CASCADE')),
+    db.Column('job_id', db.Integer, db.ForeignKey(
+        'job.id', ondelete='CASCADE')),
 )
 
 
@@ -92,10 +117,14 @@ class Job(Base, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(32), nullable=False)
     salary = db.Column(db.String(32), nullable=False)
-    requirements = db.Column(db.String(128), nullable=False)
+    # 将 requirement 分解为 experience degree 增加了 location
+    experience = db.Column(db.String(128), nullable=False)
+    location = db.Column(db.String(32), default='中国')
+    degree = db.Column(db.String(32))
     description = db.Column(db.String(256), nullable=False)
     status = db.Column(db.SmallInteger, default=1)
-    company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
+    company_id = db.Column(db.Integer,
+                           db.ForeignKey('company.id', ondelete='CASCADE'))
     company = db.relationship(
         'Company', backref=db.backref('job', uselist=False), uselist=False)
     interviewee = db.relationship(
