@@ -23,7 +23,7 @@
             <li class="layui-nav-item"><a href="{{ url_for('job.index') }}">职位</a></li>
             <li class="layui-nav-item"><a href="{{ url_for('company.index') }}">公司</a></li>
             {% if current_user.is_authenticated and current_user.is_admin %}
-            <li class="layui-nav-item"><a href="{{ url_for('front.admin') }}">控制台</a></li>
+            <li class="layui-nav-item"><a href="{{ url_for('admin.index') }}">控制台</a></li>
             {% endif %}
         </ul>
         <ul class='layui-nav layui-layout-right layui-bg-black'>
