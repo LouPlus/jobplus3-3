@@ -32,7 +32,7 @@
             <li class="layui-nav-item"><a href="{{ url_for('front.login') }}">登录</a></li>
             <li class="layui-nav-item"><a href="{{ url_for('front.register') }}">注册</a></li>
             {% else %}
-            <li class="layui-nav-item"><a href="javascript:;"><img src="static/layui/images/head.jpg" class="layui-nav-img">{{ current_user.username }}</a>
+            <li class="layui-nav-item"><a href="javascript:;"><img src="{{ url_for('static', filename='layui/images/head.jpg') }}" class="layui-nav-img">{{ current_user.username }}</a>
                 <dl class="layui-nav-child">
                     <dd><a href="{% if current_user.role == 20 %} {{ url_for('company.profile') }} {% else %} {{ url_for('user.user_profile') }} {% endif %}">我的主页</a></dd>
                     <dd><a href="javascript:;">简历管理</a></dd>
