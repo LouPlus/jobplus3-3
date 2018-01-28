@@ -1,27 +1,24 @@
 {% extends 'base.html' %}
+{% from "macros.html" import render_pagination %}
 {% block body %}
 <div class='container'>
     <!-- 职位列表 -->
     <div class='page-header'><h1>最新职位</h1></div>
+    {% for job in pagination.items %}
     <div class='container job-list'>
         <div class='job-info'>
-            <h4><a href="">后端工程师</a>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #fa6041;font-size:16px;">20-40K</span></h4>
-            <span class='requ'>经验3-5年 /本科</span><br><br>
-            <p class='requ' style="font-size:12px;">发布于 12月26日</p>
+            <h4><a href="">{{ job.name }}</a>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #fa6041;font-size:16px;">{{ job.salary }}</span></h4>
+            <span class='requ'>{{ job.experience }} / {{ job.degree }}</span><br><br>
+            <p class='requ' style="font-size:12px;">发布于 {{ job.updated_at.strftime('%H:%m') }}</p>
         </div>
-        <div class='float-right'><img src="https://www.lgstatic.com/thumbnail_160x160/i/image3/M00/01/87/CgpOIFpcSdWAJlEyAAAhK1dS3rs937.JPG" class='com-logo'></div>
+        <div class='float-right'><img src="{{ job.company.logo_url }}" class='com-logo'></div>
         <div class='com-info text-center'>
-            <h4><a href="">北京桃花谷文化艺术公司</a></h4>
-            <span class='requ'>文化娱乐/天使轮/北京</span><br><br>
-            <p>“向世界传播中国，向世界报道世界”</p>
+            <h4><a href="">{{ job.company.name }}</a></h4>
+            <span class='requ'>{{ job.location }}</span><br><br>
+            <p>{{ job.company.intro }}</p>
         </div>
     </div>
+    {% endfor %}
 </div>
-{% endblock %}
-{% block footer %}
-<footer class="footer navbar-fixed-bottom">
-    <div class="container text-center">
-        © Copyright 2018 by JobPlus
-    </div>
-</footer>
+{{ render_pagination(pagination, 'job.index') }}
 {% endblock %}

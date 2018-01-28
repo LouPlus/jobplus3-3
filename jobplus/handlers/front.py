@@ -4,7 +4,7 @@ front.py
 """
 from flask import Blueprint, render_template, redirect, url_for, flash
 from jobplus.forms import LoginForm, UserRegisterForm, CompanyRegisterForm
-from jobplus.models import User
+from jobplus.models import User, Job, Company
 from flask_login import login_user, logout_user, login_required
 
 front = Blueprint('front', __name__)
@@ -12,7 +12,9 @@ front = Blueprint('front', __name__)
 
 @front.route('/')
 def index():
-    return render_template('index.html')
+    jobs = Job.query.limit(6).all()
+    companys = Company.query.limit(8).all()
+    return render_template('index.html', jobs=jobs, companys=companys)
 
 
 @front.route('/login', methods=['GET', 'POST'])
