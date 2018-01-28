@@ -17,6 +17,11 @@ a:visited {text-decoration:none;}
 a:hover {text-decoration:none; color: #009688;}
 .sim-profile>a:hover {color: #009688;}
 
+.sim-profile > a,span{
+    display: inline-block;
+    padding-left: 10px;
+}
+
 #carousel{
     margin: auto;
     /* margin-top: 50px; */
@@ -42,7 +47,8 @@ a:hover {text-decoration:none; color: #009688;}
 }
 
 .profile-form{
-    margin-top: 30px;
+    margin: auto;
+    margin-top: 50px;
     width: 600px;
     background-color: #ffffff;
     padding: 50px;
@@ -125,11 +131,12 @@ a:hover {text-decoration:none; color: #009688;}
 }
 
 .com-info{
+    padding-right: 20px;
     float: right;
 }
 
 .job-list{
-    padding: 20px 40px 5px;
+    padding: 20px 50px 10px;
     margin-bottom: 20px;
     box-shadow: 0 4px 10px 0 rgba(0,7,7,.5);
 }
@@ -140,4 +147,8 @@ a:hover {text-decoration:none; color: #009688;}
 
 .float-right{
     float: right;
+}
+
+.nav-pagination{
+    text-align: center;
 }
