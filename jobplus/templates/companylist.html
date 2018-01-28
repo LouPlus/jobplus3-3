@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
+{% from "macros.html" import render_pagination %}
 {% block body %}
 <div class='container'>
     <div class='page-header'><h1>最新公司</h1></div>
     <!-- 最新公司行 -->
     <div class="row">
+        {% for company in pagination.items %}
         <div class="col-sm-4 col-md-3">
             <div class="thumbnail job-item text-center">
-                <img src="https://www.lgstatic.com/thumbnail_160x160/i/image3/M00/01/87/CgpOIFpcSdWAJlEyAAAhK1dS3rs937.JPG" class='com-logo'>
-                <p><a href="">央视国际视频通讯有限公司</a></p>
-                <p class='requ'>文化娱乐 /不需要融资</p>
-                <p>“向世界传播中国，向世界报道世界”</p>
+                <img src="{{ company.logo_url }}" class='com-logo'>
+                <h4><a href="">{{ company.name }}</a></h4>
+                <p class='requ'>{{ company.location }}</p>
+                <p>{{ company.intro }}</p>
                 <hr>
                 <div class="caption text-center">
                     <div class='sim-profile'>
@@ -18,13 +20,8 @@
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
 </div>
-{% endblock %}
-{% block footer %}
-<footer class="footer navbar-fixed-bottom">
-    <div class="container text-center">
-        © Copyright 2018 by JobPlus
-    </div>
-</footer>
+{{ render_pagination(pagination, 'company.index') }}
 {% endblock %}

@@ -20,31 +20,34 @@
     <div class='page-header'><h1>最新职位</h1></div>
     <!-- 最新职位行 -->
     <div class="row">
+         {% for job in jobs %}
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail job-item">
-                <h4><a href="">后端工程师</a><small> [09：19发布]</small><span class='salary'>20-40K</span></h4>
-                <span class='requ'>经验3-5年 /本科</span>
+                <h4><a href="">{{ job.name }}</a><small> [{{ job.updated_at.strftime('%H:%m') }}发布]</small><span class='salary'>{{ job.salary }}</span></h4>
+                <span class='requ'>{{ job.experience }} / {{ job.degree }}</span>
                 <hr>
                 <div class="caption">
-                    <img src="https://www.lgstatic.com/thumbnail_100x100/i/image/M00/55/79/CgqKkVfHiNKAc9R2AAECAkN7oLA541.jpg" class='small-logo'>
+                    <img src="{{ job.company.logo_url }}" class='small-logo'>
                     <div class='sim-profile'>
-                        <a href="">北京桃花谷文化艺术公司</a><br>
-                        <span class='requ'>文化娱乐/天使轮/北京</span>
+                        <a href="">{{ job.company.name }}</a><br>
+                        <span class='requ'>{{ job.location }}</span>
                     </div>
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    <div class="text-center"><a href="" class="layui-btn layui-btn-primary more-list">查看更多</a></div>
+    <div class="text-center"><a href="{{ url_for('job.index') }}" class="layui-btn layui-btn-primary more-list">查看更多</a></div>
     <div class='page-header'><h1>最新公司</h1></div>
     <!-- 最新公司行 -->
     <div class="row">
+        {% for company in companys %}
         <div class="col-sm-4 col-md-3">
             <div class="thumbnail job-item text-center">
-                <img src="https://www.lgstatic.com/thumbnail_160x160/i/image3/M00/01/87/CgpOIFpcSdWAJlEyAAAhK1dS3rs937.JPG" class='com-logo'>
-                <p><a href="">央视国际视频通讯有限公司</a></p>
-                <p class='requ'>文化娱乐 /不需要融资</p>
-                <p>“向世界传播中国，向世界报道世界”</p>
+                <img src="{{ company.logo_url }}" class='com-logo'>
+                <h4><a href="">{{ company.name }}</a></h4>
+                <p class='requ'>{{ company.location }}</p>
+                <p>{{ company.intro }}</p>
                 <hr>
                 <div class="caption text-center">
                     <div class='sim-profile'>
@@ -53,7 +56,8 @@
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    <div class="text-center"><a href="" class="layui-btn layui-btn-primary more-list">查看更多</a></div>
+    <div class="text-center"><a href="{{ url_for('company.index') }}" class="layui-btn layui-btn-primary more-list">查看更多</a></div>
 </div>
 {% endblock %}
