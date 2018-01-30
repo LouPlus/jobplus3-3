@@ -7,7 +7,6 @@ Vagrantfile
 *.pyc
 venv
 ngrok
-jobplus/config.py
 migrations
 *.mo
 *.egg-info
